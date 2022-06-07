@@ -1,3 +1,5 @@
+const { signToken } = require('../utils/auth');
+
 const resolvers = {
   Query: {
     me: async function (input) {
@@ -28,6 +30,17 @@ const resolvers = {
           { new: true }
         );
         return updatedNewUser;
+      }
+    },
+
+    removeBook: async ({ bookId }, input) => {
+      if (input) {
+        const updatedUser = await findByIdAndUpdate(
+          { _id: input_id },
+          { $pull: { savedBooks: { bookId } } },
+          { new: true }
+        );
+        return updatedUser;
       }
     },
   },
