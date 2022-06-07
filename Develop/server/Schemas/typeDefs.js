@@ -26,4 +26,18 @@ const typeDefs = gql`
 
     savedBooks: [book]
   }
+
+  type Book {
+    bookId: id
+
+    authors: [string]
+
+    description: string
+
+    title: string
+
+    image: png
+
+    link: string
+  }
 `;
