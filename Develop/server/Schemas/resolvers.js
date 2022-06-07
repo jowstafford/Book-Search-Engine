@@ -13,6 +13,12 @@ const resolvers = {
       const SignToken = signToken(client);
       return { SignToken, client };
     },
+
+    login: async function ({ email }) {
+      const client = await client.findOne({ email });
+      const SignToken = signToken(client);
+      return { SignToken, client };
+    },
   },
 };
 
