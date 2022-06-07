@@ -19,6 +19,17 @@ const resolvers = {
       const SignToken = signToken(client);
       return { SignToken, client };
     },
+
+    saveBook: async function ({ newBook }, input) {
+      if (input) {
+        const updatedNewUser = await findByIdAndUpdate(
+          { _id: input_id },
+          { $push: { savedBooks: newBook } },
+          { new: true }
+        );
+        return updatedNewUser;
+      }
+    },
   },
 };
 
