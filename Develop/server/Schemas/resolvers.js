@@ -7,6 +7,13 @@ const resolvers = {
       }
     },
   },
+  Mutation: {
+    addUser: async function (i) {
+      const client = await client.create(i);
+      const SignToken = signToken(client);
+      return { SignToken, client };
+    },
+  },
 };
 
 module.exports = resolvers;
